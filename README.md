@@ -2,15 +2,24 @@
 
 - Loyal
   - The God Emperor of Mankind
-  - Imperial Guard
+  - Astra Militarum/Imperial Guard
   - Imperial Guard Regiments  
   - Imperial Guard Notable Characters
-  - SpaceMarines
+  - Astartes/SpaceMarines
   - SpaceMarines Legions
   - SpaceMarines Primarchs 
   - SpaceMarines Notable Characters
+  - Adeptus mechanicus
+  - Imperial Knights
+  - Collegia titanica
+  - Adeptus custodes
+  - Adeptus sororitas
+  - The Inquisition
+  - Assasins
+  - 
 - Traitor
-  - Chaos Gods 
+  - Chaos Gods
+  - Chaos Demons 
   - Traitor Guard
   - Traitor Guard Regiments 
   - Traitor Guard Notable Characters
@@ -18,6 +27,7 @@
   - Chaos SpaceMarine Legions 
   - Chaos SpaceMarine Primarchs  
   - Chaos SpaceMarine Notable Characters
+  - Dark Mechanicum
 - Alpha Legion
   - Primarchs
   - Notable Characters
