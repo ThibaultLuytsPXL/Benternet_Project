@@ -1,4 +1,4 @@
-# WarHammer_40K_Lore + DiceRoller
+# WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
 
 - Loyal
   - Imperial Guard
