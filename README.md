@@ -1,1 +1,1 @@
-# WarHamme40ore + DiceRoller
+# WarHamme40KLore + DiceRoller
