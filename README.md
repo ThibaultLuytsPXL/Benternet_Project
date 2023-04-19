@@ -3,10 +3,11 @@
 - Loyal
   - Imperial Guard
   - Imperial Guard Regiments  
-  - SpaceMarine
-  - Legions
-  - Primarchs 
-  - Notable Characters
+  - Imperial Guard Notable Characters
+  - SpaceMarines
+  - SpaceMarines Legions
+  - SpaceMarines Primarchs 
+  - SpaceMarines Notable Characters
 - Traitor
   - Chaos Gods 
   - Legions 
