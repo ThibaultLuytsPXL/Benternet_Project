@@ -16,7 +16,6 @@
   - Adeptus sororitas
   - The Inquisition
   - Assasins
-  - 
 - Traitor
   - Chaos Gods
   - Chaos Demons 
