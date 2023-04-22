@@ -1,5 +1,5 @@
 # WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
-
+### idee
 - Loyal
   - The God Emperor of Mankind
   - Astra Militarum/Imperial Guard
@@ -31,3 +31,6 @@
   - Primarchs
   - Notable Characters
 
+°client-°Benternet-°service
+
+|->
