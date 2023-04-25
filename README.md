@@ -1,5 +1,33 @@
 # WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
-### idee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### List
 - DiceRoller
 - Loyal
   - The God Emperor of Mankind
