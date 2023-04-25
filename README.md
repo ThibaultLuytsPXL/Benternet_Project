@@ -1,34 +1,28 @@
 # WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
 
+In this project i wil be making a service that gives Warhammer 40K Lore using ZMQ to talk between the service and a client using the benternet broker.
 
+## layout
 
+The layout between the client and service is shown here.
 
+![BenternetLayout](BenternetImages/benternet_layout.png)
 
+The Client sends its message to the broker with the right topic. The broker wil then send the message to the service that listens on said topic. The service wil then respond to that message with a different topic that the client listens to.
 
+## Ladder Structure
 
+This is how the commands between the Client and Service looks with the correct Topics.
 
+![ladder](BenternetImages/ladder.png)
 
+The service responds to the client with a lttle info on what has been asked and (sends you to the website)/ also with links to websites with more information.
+The List with all possible lore info can be found int the list section. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+`Lorahmmer?>Help`
 
 ### List
-- DiceRoller
+- DiceRoller (gives a random number between 0 and the given number)/(also used for *suprise me*)
 - Loyal
   - The God Emperor of Mankind
   - Astra Militarum/Imperial Guard
@@ -45,6 +39,7 @@
   - Adeptus sororitas
   - The Inquisition
   - Assasins
+  - Suprise me
 - Traitor
   - Chaos Gods
   - Chaos Demons 
@@ -56,6 +51,8 @@
   - Chaos SpaceMarine Primarchs  
   - Chaos SpaceMarine Notable Characters
   - Dark Mechanicum
+  - Suprise me
 - Alpha Legion
   - Primarchs
   - Notable Characters
+  - Suprise me
