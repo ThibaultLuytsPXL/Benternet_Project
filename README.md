@@ -17,11 +17,23 @@ This is how the commands between the Client and Service looks with the correct T
 ![ladder](BenternetImages/ladder.png)
 
 The service responds to the client with a lttle info on what has been asked and (sends you to the website)/ also with links to websites with more information.
-The List with all possible lore info can be found int the list section. 
+The List with all possible info can be found int the list section. 
 
-`Lorahmmer?>Help`
+### Requesting help
 
-### List
+The `Lorehammer?>Help` commands shows the possible topic addons for using the service by showing `Lorehammer!>diceroller>(#) or Lore`.
+
+### Using the DiceRoller
+
+Using `Lorehammer?>Dice>#` with # as a number wil return `Lorehammer!>Dice>#` where here # is a number between 0 and the original number.
+
+### Requesting Lore
+
+The command `Lorehammer?>Lore` wil show the three available categories to choose from `Lorehammer!>Loyal, Traitor, Alpha Legion`.
+
+You can then choose which topic you want, for example `Lorehammer?>L>SpaceMarines Legions` with **L** for Loyal, **T** for Traitor and **@** for Alpha Legion *because Alpha Legion*.
+
+## List
 - DiceRoller (gives a random number between 0 and the given number)/(also used for *suprise me*)
 - Loyal
   - The God Emperor of Mankind
@@ -55,4 +67,4 @@ The List with all possible lore info can be found int the list section.
 - Alpha Legion
   - Primarchs
   - Notable Characters
-  - Suprise me
+  - Suprise you!
