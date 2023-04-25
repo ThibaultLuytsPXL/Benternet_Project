@@ -17,7 +17,7 @@ This is how the commands between the Client and Service looks with the correct T
 ![ladder](BenternetImages/ladder.png)
 
 The service responds to the client with a lttle info on what has been asked and (sends you to the website)/ also with links to websites with more information.
-The List with all possible info can be found int the list section. 
+The List with all possible info can be found in the list section. 
 
 ### Requesting help
 
