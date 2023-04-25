@@ -1,5 +1,6 @@
 # WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
 ### idee
+- DiceRoller
 - Loyal
   - The God Emperor of Mankind
   - Astra Militarum/Imperial Guard
@@ -33,4 +34,10 @@
 
 °client-°Benternet-°service
 
-|->
+|->help->|
+|<-Diceroller or lore<-|
+|->Diceroller(num)->|
+|<-rand nummer between 0en num<-|
+|->lore-help->|
+|<-lore-Loyal, lore-Traitor, lore-Alpha Legion<-|
+||
