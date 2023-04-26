@@ -1,4 +1,4 @@
-# WarHammer_40K_Imperium_Of_Man_Lore + DiceRoller
+# LoreHammer
 
 In this project i wil be making a service that gives Warhammer 40K Lore using ZMQ to talk between the service and a client using the benternet broker.
 
