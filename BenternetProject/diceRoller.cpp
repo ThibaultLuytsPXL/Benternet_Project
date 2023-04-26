@@ -17,8 +17,7 @@ DiceRoller::DiceRoller(QCoreApplication *a)
     subscriber->connectTo( "tcp://benternet.pxl-ea-ict.be:24042" );
     if (!subscriber->isConnected() || !pusher->isConnected())
         std::cout << "not connected\n" << std::endl;
-
-    subscriber->subscribeTo( "DiceRoller" );
+    subscriber->subscribeTo( "DiceRoller?" );
 
 
 
@@ -40,11 +39,14 @@ void DiceRoller::ReciveMessage(const QList<QByteArray>& messages)
     for(QByteArray msgByteArray : messages) {
         QString msg = QString::fromUtf8(msgByteArray);
 
-        if(msg == "DiceRoller>"){
+        if(msg == "DiceRoller?>6"){
             DiceRoll();
-        }else{
-            std::cout << "Wrong topic" << std::endl;
-            QString error = "Wrong topic";
+        }else if(msg == "DiceRoller?>20"){
+            DiceRoll20();
+        }else
+        {
+            //std::cout << "Wrong topic" << std::endl;
+            QString error = "DiceRoller!>Wrong topic";
             nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
             pusher->sendMessage( message );
         }
@@ -55,7 +57,16 @@ void DiceRoller::DiceRoll()
 {
     srand(time(0));
     int dice = rand() %6 +1 ;
-    QString Dice = QString::number(dice);
+    QString Dice = "DiceRoller!>" + QString::number(dice);
+    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Dice.toUtf8() );
+    pusher->sendMessage( message );
+}
+
+void DiceRoller::DiceRoll20()
+{
+    srand(time(0));
+    int dice = rand() %20 +1 ;
+    QString Dice = "DiceRoller!>" + QString::number(dice);
     nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Dice.toUtf8() );
     pusher->sendMessage( message );
 }

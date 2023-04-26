@@ -17,6 +17,7 @@ public:
     DiceRoller(QCoreApplication *a);
     void ReciveMessage(const QList<QByteArray>& messages);
     void DiceRoll();
+    void DiceRoll20();
 private:
     nzmqt::ZMQSocket *pusher;
     nzmqt::ZMQSocket *subscriber;
