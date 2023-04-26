@@ -6,7 +6,7 @@ In this project i wil be making a service that gives Warhammer 40K Lore using ZM
 
 The layout between the client and service is shown here.
 
-![BenternetLayout](BenternetImages/benternet_layout.png)
+![BenternetLayout](BenternetImages/flowchart.png)
 
 The Client sends its message to the broker with the right topic. The broker wil then send the message to the service that listens on said topic. The service wil then respond to that message with a different topic that the client listens to.
 
