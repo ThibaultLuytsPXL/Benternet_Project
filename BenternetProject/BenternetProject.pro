@@ -8,7 +8,9 @@ LIBS += -L$$PWD/../lib -lzmq -lnzmqt -lws2_32 -lIphlpapi
 INCLUDEPATH += $$PWD/../include
 
 SOURCES += main.cpp \
-    diceroller.cpp
+    diceroller.cpp \
+    warhammerlore.cpp
 
 HEADERS += \
-    diceroller.h
+    diceroller.h \
+    warhammerlore.h

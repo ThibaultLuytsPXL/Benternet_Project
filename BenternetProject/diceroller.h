@@ -14,7 +14,7 @@
 class DiceRoller: public QObject
 {
 public:
-    DiceRoller(QCoreApplication *a);
+    DiceRoller(QCoreApplication *b);
     void ReciveMessage(const QList<QByteArray>& messages);
     void DiceRoll();
     void DiceRoll20();

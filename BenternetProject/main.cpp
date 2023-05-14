@@ -10,6 +10,7 @@
 #include <QThread>
 #include <QDateTime>
 #include <DiceRoller.h>
+#include <WarhammerLore.h>
 int main( int argc, char *argv[] )
 {
     /*CURL *hnd = curl_easy_init();
@@ -26,5 +27,7 @@ int main( int argc, char *argv[] )
 */
     QCoreApplication a(argc, argv);
     DiceRoller * roller = new DiceRoller(&a);
-    return a.exec();
+    WarhammerLore * WarLore = new WarhammerLore(%b);
+
+    return a.exec(), b.exec();
 }
