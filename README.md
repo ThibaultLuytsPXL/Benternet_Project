@@ -50,7 +50,7 @@ You can then choose which topic you want, for example `Lorehammer?>L>SpaceMarine
   - Adeptus custodes
   - Adeptus sororitas
   - The Inquisition
-  - Assasins
+  - Officio Assassinorum
   - Suprise me
 - Traitor
   - Chaos Gods
