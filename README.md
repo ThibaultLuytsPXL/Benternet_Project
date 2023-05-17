@@ -8,7 +8,7 @@ The layout between the client and service is shown here.
 
 ![BenternetLayout](BenternetImages/flowchart.png)
 
-The Client sends its message with the right topic `Lorehammer?>` to the broker using ZMQ. The broker wil then send the message to the service that listens on said topic `Lorehammer?>`. The service wil then respond to that message with a different topic `Lorehammer!>` that the client listens to.
+The Client sends its message with the right topic `Lorehammer?>ID` to the broker using ZMQ. The broker wil then send the message to the service that listens on said topic `Lorehammer?>`. The service wil then respond to that message with a different topic `Lorehammer!>ID` that the client listens to.
 
 ## Ladder Structure
 
