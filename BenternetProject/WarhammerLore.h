@@ -17,6 +17,7 @@ class WarHammerLore: public QObject
 public:
     WarHammerLore(QCoreApplication *b);
     void ReciveMessage(const QList<QByteArray>& messages);
+    void SendMessage(QString msg);
     void DiceRoll(int, QList<QString>);
     void LoreList();
     void LoreHelp(QList<QString>);

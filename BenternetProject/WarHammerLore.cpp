@@ -59,21 +59,18 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         {
             if(msgSplit[2].toLower().contains("loyal")|| msgSplit[2].contains("L"))
             {
-                QString Lore = QString("LoreHammer!>%1>L>\n%2").arg(msgSplit[1]).arg(loreListLoyal.keys().join('\n'));
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                pusher->sendMessage( message );
+                QString lore = QString("LoreHammer!>%1>L>\n%2").arg(msgSplit[1]).arg(loreListLoyal.keys().join('\n'));
+                SendMessage(lore);
             }
             else if(msgSplit[2].toLower().contains("traitor")|| msgSplit[2].contains("T"))
             {
-                QString Lore = QString("LoreHammer!>%1>T>\n%2").arg(msgSplit[1]).arg(loreListTraitor.keys().join('\n'));
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                pusher->sendMessage( message );
+                QString lore = QString("LoreHammer!>%1>T>\n%2").arg(msgSplit[1]).arg(loreListTraitor.keys().join('\n'));
+                SendMessage(lore);
             }
             else if(msgSplit[2].toLower().contains("alpha")|| msgSplit[2].contains("@"))
             {
-                QString Lore = QString("LoreHammer!>%1>@>\n%2").arg(msgSplit[1]).arg(loreListAlpha.keys().join('\n'));
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                pusher->sendMessage( message );
+                QString lore = QString("LoreHammer!>%1>@>\n%2").arg(msgSplit[1]).arg(loreListAlpha.keys().join('\n'));
+                SendMessage(lore);
             }
         }
         else if(msgSplit[2].toLower().compare("l") == 0)
@@ -81,50 +78,44 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         {
                 if( loreListLoyal.contains(msgSplit[3]))
                 {
-                    QString Lore = QString("LoreHammer!>%1>L>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListLoyal.value(msgSplit[3]));
-                    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                    pusher->sendMessage( message );
+                    QString lore = QString("LoreHammer!>%1>L>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListLoyal.value(msgSplit[3]));
+                    SendMessage(lore);
                 }
 
                 else
 
                 {
                     QString error = QString("LoreHammer!>%1>L>Vox Communications error").arg(msgSplit[1]);
-                    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
-                    pusher->sendMessage( message );
+                    SendMessage(error);
                 }
 
         }else if(msgSplit[2].toLower().compare("t") == 0)
         {
             if( loreListTraitor.contains(msgSplit[3]))
             {
-                QString Lore = QString("LoreHammer!>%1>T>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListTraitor.value(msgSplit[3]));
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                pusher->sendMessage( message );
+                QString lore = QString("LoreHammer!>%1>T>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListTraitor.value(msgSplit[3]));
+                SendMessage(lore);
             }
 
             else
 
             {
                 QString error =QString("LoreHammer!>%1>T>Vox Communications error").arg(msgSplit[1]);
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
-                pusher->sendMessage( message );
+                SendMessage(error);
             }
 
         }else if(msgSplit[2].compare("@") == 0){
             if( loreListAlpha.contains(msgSplit[3]))
             {
-                QString Lore = QString("LoreHammer!>%1>@>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListAlpha.value(msgSplit[3]));
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
-                pusher->sendMessage( message );
+                QString lore = QString("LoreHammer!>%1>@>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListAlpha.value(msgSplit[3]));
+                SendMessage(lore);
             }
 
             else
 
             {
                 QString error = QString("LoreHammer!>%1>@>Vox Communications error").arg(msgSplit[1]);
-                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
-                pusher->sendMessage( message );
+                SendMessage(error);
             }
         }
 
@@ -132,10 +123,15 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         {
             //std::cout << "Wrong topic" << std::endl;
             QString error = QString("LoreHammer!>%1>Wrong topic").arg(msgSplit[1]);
-            nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
-            pusher->sendMessage( message );
+            SendMessage(error);
         }
     }
+}
+
+void WarHammerLore::SendMessage(QString msg)
+{
+    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( msg.toUtf8() );
+    pusher->sendMessage( message );
 }
 
 void WarHammerLore::DiceRoll(int number, QList<QString> id)
@@ -143,22 +139,19 @@ void WarHammerLore::DiceRoll(int number, QList<QString> id)
     srand(time(0));
     int dice = rand() %number +1 ;
     QString diceMsg = QString("LoreHammer!>%1>Dice>\n%2").arg(id[1]).arg(dice);
-    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( diceMsg.toUtf8() );
-    pusher->sendMessage( message );
+    SendMessage(diceMsg);
 }
 
 void WarHammerLore::Help(QList<QString> id)
 {
     QString help = QString("LoreHammer!>%1>Help\n\nFor Rolling Dice, send:\nLoreHammer?>%1>Dice># for rolling a dice between 0 and #\n\nFor a list of the main Lore categories about Warhammer, send:\nLoreHammer?>%1>Lore").arg(id[1]);
-    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( help.toUtf8() );
-    pusher->sendMessage( message );
+    SendMessage(help);
 }
 
 void WarHammerLore::LoreHelp(QList<QString> id)
 {
     QString loreHelp = QString("LoreHammer!>%1>Lore\n\nThe categories are Loyal, Traitor and Alpha Legion\n\nTo see each individual list, send:\n\nLoreHammer?>%1>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list").arg(id[1]);
-    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( loreHelp.toUtf8() );
-    pusher->sendMessage( message );
+    SendMessage(loreHelp);
 }
 
 void WarHammerLore::LoreList()
