@@ -42,14 +42,27 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         QString msg = QString::fromUtf8(msgByteArray);
         QList<QString> msgSplit = msg.split(">");
 
-        if(msgSplit[2].compare( "Dice") == 0)
+        if(msgSplit[2].toLower().compare("help") == 0)
+        {
+            Help(msgSplit[1]);
+        }
+        else if(msgSplit[2].toLower().compare( "dice") == 0)
         {
             int number = msgSplit[3].toInt();
             DiceRoll(number, msgSplit);
-
         }
+        else if(msgSplit[2].toLower().compare( "lore") == 0)
+        {
+            LoreHelp(msgSplit[1]);
+        }
+        else if(msgSplit[2].toLower().contains("list"))
+        {
+            if(msgSplit[2].toLower().contains("loyal")|| msgSplit[2].toLower().contains("l"))
+            {
 
-        else if(msgSplit[2].compare("L") == 0)
+            }
+        }
+        else if(msgSplit[2].toLower().compare("l") == 0)
 
         {
                 if( loreListLoyal.contains(msgSplit[3]))
@@ -67,7 +80,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
                     pusher->sendMessage( message );
                 }
 
-        }else if(msgSplit[2].compare("T") == 0)
+        }else if(msgSplit[2].toLower().compare("t") == 0)
         {
             if( loreListTraitor.contains(msgSplit[3]))
             {
@@ -104,7 +117,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         else
         {
             //std::cout << "Wrong topic" << std::endl;
-            QString error = "LoreHammer!>Wrong topic";
+            QString error = QString("LoreHammer!>%1>Wrong topic").arg(msgSplit[1]);
             nzmqt::ZMQMessage message = nzmqt::ZMQMessage( error.toUtf8() );
             pusher->sendMessage( message );
         }
@@ -120,9 +133,18 @@ void WarHammerLore::DiceRoll(int number, QList<QString> id)
     pusher->sendMessage( message );
 }
 
-void WarHammerLore::Help(QList<QString> id)
+void WarHammerLore::Help(QString id)
 {
-    QString help = QString("LoreHammer!>%1>\n%2").arg(id[1]).arg();
+    QString help = QString("LoreHammer!>%1>Help/n/nFor Rolling Dice, send:/nLoreHammer?>%1>Dice># for rolling a dice between 0 and #/n/nFor a list of the main Lore categories about Warhammer, send:/nLoreHammer?>%1>Lore").arg(id[1]);
+    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( help.toUtf8() );
+    pusher->sendMessage( message );
+}
+
+void WarHammerLore::LoreHelp(QString id)
+{
+    QString loreHelp = QString("LoreHammer!>%1>Lore/n/nThe categories are Loyal, Traitor and Alpha Legion/n/nTo see each individual list, send:/n/nLoreHammer?>%1>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list").arg(id[1]);
+    nzmqt::ZMQMessage message = nzmqt::ZMQMessage( loreHelp.toUtf8() );
+    pusher->sendMessage( message );
 }
 
 void WarHammerLore::LoreList()
@@ -161,3 +183,5 @@ void WarHammerLore::LoreList()
     loreListAlpha.insert("Notable Characters","Alpharius - Primarch,Omegon - Leader of the Effrit Stealth Squad / Primarch, Ingo Pech - First Captain, Mathias Herzog - Captain of the 2nd Company, Armillus Dynat - Harrowmaster, Exodus - Assassin, Phocron - Headhunter Prime, Siridor Vhen - Praetor, Sheed Ranko - Captain of the Lernaen Terminator Squad Killed during the Tenebrae Mission, Autilon Skorr - 'The Hydra's Headman' - Consul Delegatus of the Alpha Legion");
     loreListAlpha.insert("Suprise you!","");
 }
+
+
