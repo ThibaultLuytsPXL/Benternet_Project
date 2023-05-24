@@ -19,8 +19,8 @@ public:
     void ReciveMessage(const QList<QByteArray>& messages);
     void DiceRoll(int, QList<QString>);
     void LoreList();
-    void LoreHelp(QString);
-    void Help(QString);
+    void LoreHelp(QList<QString>);
+    void Help(QList<QString>);
     QMap<QString, QString> loreListLoyal;
     QMap<QString, QString> loreListTraitor;
     QMap<QString, QString> loreListAlpha;

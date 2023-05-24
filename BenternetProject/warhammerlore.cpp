@@ -44,7 +44,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
 
         if(msgSplit[2].toLower().compare("help") == 0)
         {
-            Help(msgSplit[1]);
+            Help(msgSplit);
         }
         else if(msgSplit[2].toLower().compare( "dice") == 0)
         {
@@ -53,13 +53,27 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
         }
         else if(msgSplit[2].toLower().compare( "lore") == 0)
         {
-            LoreHelp(msgSplit[1]);
+            LoreHelp(msgSplit);
         }
         else if(msgSplit[2].toLower().contains("list"))
         {
-            if(msgSplit[2].toLower().contains("loyal")|| msgSplit[2].toLower().contains("l"))
+            if(msgSplit[2].toLower().contains("loyal")|| msgSplit[2].contains("L"))
             {
-
+                QString Lore = QString("LoreHammer!>%1>L>\n%2").arg(msgSplit[1]).arg(loreListLoyal.keys().join('\n'));
+                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
+                pusher->sendMessage( message );
+            }
+            else if(msgSplit[2].toLower().contains("traitor")|| msgSplit[2].contains("T"))
+            {
+                QString Lore = QString("LoreHammer!>%1>T>\n%2").arg(msgSplit[1]).arg(loreListTraitor.keys().join('\n'));
+                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
+                pusher->sendMessage( message );
+            }
+            else if(msgSplit[2].toLower().contains("alpha")|| msgSplit[2].contains("@"))
+            {
+                QString Lore = QString("LoreHammer!>%1>@>\n%2").arg(msgSplit[1]).arg(loreListAlpha.keys().join('\n'));
+                nzmqt::ZMQMessage message = nzmqt::ZMQMessage( Lore.toUtf8());
+                pusher->sendMessage( message );
             }
         }
         else if(msgSplit[2].toLower().compare("l") == 0)
@@ -133,16 +147,16 @@ void WarHammerLore::DiceRoll(int number, QList<QString> id)
     pusher->sendMessage( message );
 }
 
-void WarHammerLore::Help(QString id)
+void WarHammerLore::Help(QList<QString> id)
 {
-    QString help = QString("LoreHammer!>%1>Help/n/nFor Rolling Dice, send:/nLoreHammer?>%1>Dice># for rolling a dice between 0 and #/n/nFor a list of the main Lore categories about Warhammer, send:/nLoreHammer?>%1>Lore").arg(id[1]);
+    QString help = QString("LoreHammer!>%1>Help\n\nFor Rolling Dice, send:\nLoreHammer?>%1>Dice># for rolling a dice between 0 and #\n\nFor a list of the main Lore categories about Warhammer, send:\nLoreHammer?>%1>Lore").arg(id[1]);
     nzmqt::ZMQMessage message = nzmqt::ZMQMessage( help.toUtf8() );
     pusher->sendMessage( message );
 }
 
-void WarHammerLore::LoreHelp(QString id)
+void WarHammerLore::LoreHelp(QList<QString> id)
 {
-    QString loreHelp = QString("LoreHammer!>%1>Lore/n/nThe categories are Loyal, Traitor and Alpha Legion/n/nTo see each individual list, send:/n/nLoreHammer?>%1>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list").arg(id[1]);
+    QString loreHelp = QString("LoreHammer!>%1>Lore\n\nThe categories are Loyal, Traitor and Alpha Legion\n\nTo see each individual list, send:\n\nLoreHammer?>%1>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list").arg(id[1]);
     nzmqt::ZMQMessage message = nzmqt::ZMQMessage( loreHelp.toUtf8() );
     pusher->sendMessage( message );
 }
