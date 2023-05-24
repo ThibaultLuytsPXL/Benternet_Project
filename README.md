@@ -21,15 +21,16 @@ The List with all possible info can be found in the list section.
 
 ### Requesting help
 
-The `Lorehammer?>Help` commands shows the possible topic addons for using the service by showing `Lorehammer!>diceroller>(#) or Lore`.
+The `Lorehammer?>ID>Help` commands shows the possible topic addons for using the service by showing `Lorehammer!>ID>dice>(#) or Lore`.
 
 ### Using the DiceRoller
 
-Using `Lorehammer?>Dice>#` with # as a number wil return `Lorehammer!>Dice>#` where here # is a number between 0 and the original number.
+Using `Lorehammer?>ID>Dice>#` with # as a number wil return `Lorehammer!>ID>Dice>#` where here # is a number between 0 and the original number.
 
 ### Requesting Lore
 
-The command `Lorehammer?>Lore` wil show the three available categories to choose from `Lorehammer!>Loyal, Traitor, Alpha Legion`.
+The command `Lorehammer?>ID>Lore` wil show the three available categories to choose from `Lorehammer!>ID>Loyal, Traitor, Alpha Legion`.
+The command `Lorehammer?>ID>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list` wil show all keywords from each list.
 
 You can then choose which topic you want, for example `Lorehammer?>L>SpaceMarines Legions` with **L** for Loyal, **T** for Traitor and **@** for Alpha Legion *because Alpha Legion*.
 
