@@ -6,7 +6,7 @@
 WarHammerLore::WarHammerLore(QCoreApplication *a)
 {
     std::cout << "Prep!" << std::endl;
-    LoreList();
+    LoreList();//Create the Lore map
     try
     {
     nzmqt::ZMQContext *context = nzmqt::createDefaultContext( a );
