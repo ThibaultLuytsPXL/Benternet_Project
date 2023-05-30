@@ -72,7 +72,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
                 SendMessage(lore);
             }
         }
-        else if(msgSplit[2].toLower().compare("l") == 0)
+        else if(msgSplit[2].contains("l"))
 
         {
                 if( loreListLoyal.contains(msgSplit[3]))
@@ -88,7 +88,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
                     SendMessage(error);
                 }
 
-        }else if(msgSplit[2].toLower().compare("t") == 0)
+        }else if(msgSplit[2].contains("t"))
         {
             if( loreListTraitor.contains(msgSplit[3]))
             {
@@ -103,7 +103,7 @@ void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
                 SendMessage(error);
             }
 
-        }else if(msgSplit[2].compare("@") == 0){
+        }else if(msgSplit[2].contains("@")){
             if( loreListAlpha.contains(msgSplit[3]))
             {
                 QString lore = QString("LoreHammer!>%1>@>%2>%3").arg(msgSplit[1]).arg(msgSplit[3]).arg(loreListAlpha.value(msgSplit[3]));
@@ -179,15 +179,15 @@ void WarHammerLore::LoreList()
     loreListTraitor.insert("Traitor Guard Regiments","");
     loreListTraitor.insert("Traitor Guard Notable Characters","");
     loreListTraitor.insert("Chaos SpaceMarine","");
-    loreListTraitor.insert("Chaos SpaceMarine Legions","");
-    loreListTraitor.insert("Chaos SpaceMarine Primarchs","");
-    loreListTraitor.insert("Chaos SpaceMarine Notable Characters","");
-    loreListTraitor.insert("Dark Mechanicum","");
-    loreListTraitor.insert("Suprise me","");
+    loreListTraitor.insert("Chaos SpaceMarine Legions","Emperor's Children - Iron Warriors - Night Lords - World Eaters - Death Guard - Thousand Sons - Luna Wolves/Sons of Horus - Word Bearers - Alpha Legion (maybe?)");
+    loreListTraitor.insert("Chaos SpaceMarine Primarchs","Fulgrim is the Primarch of the Emperor's Children - Perturabo is the Primarch of the Iron Warriors - Konrad Curze, also known as Night Haunter primarch of The Night Lords - Angron is the Primarch of the World Eaters (angry dude) - Mortarion (also known as the Death Lord, The Pale King, or the Reaper of Men). He was given command of the Death Guard Legion - Magnus the Red is the Primarch of the Thousand Sons - Horus Lupercal, Warmaster of the Great Crusade, (was)Primarch of the Sons of Horus - Lorgar Aurelian is the Primarch of the Word Bearers - (Alpharius technically)");
+    loreListTraitor.insert("Chaos SpaceMarine Notable Characters","Abaddon the Despoiler, Warmaster of Chaos - Khârn the Betrayer - Ahriman, Exile of the Thousand Sons - Fabius Bile - Lucius the Eternal - Typhus, Host of the Destroyer Hive - Huron Blackheart, Master of the Red Corsairs");
+    loreListTraitor.insert("Dark Mechanicum","The Dark Mechanicum, or Dark Mechanicus, referred to by themselves as the New Mechanicum, is a Chaos-affiliated counterpart to the Adeptus Mechanicus. Its origins trace back to those who pledged loyalty to Warmaster Horus at the end of the Great Crusade. The Dark Mechanicum serves as a dark 'mirror' to their counterparts within the Imperium.");
+    loreListTraitor.insert("Suprise me","Magnus did nothing wrong (exept he kinda did)");
     //Alpha loreList
     loreListAlpha.insert("Primarchs","Alpharius and his twin Omegon (sometimes referred to collectively as just 'Alpharius Omegon')");
     loreListAlpha.insert("Notable Characters","Alpharius - Primarch,Omegon - Leader of the Effrit Stealth Squad / Primarch, Ingo Pech - First Captain, Mathias Herzog - Captain of the 2nd Company, Armillus Dynat - Harrowmaster, Exodus - Assassin, Phocron - Headhunter Prime, Siridor Vhen - Praetor, Sheed Ranko - Captain of the Lernaen Terminator Squad Killed during the Tenebrae Mission, Autilon Skorr - 'The Hydra's Headman' - Consul Delegatus of the Alpha Legion");
-    loreListAlpha.insert("Suprise you!","");
+    loreListAlpha.insert("Suprise you!","We are all Alpharius");
 }
 
 
