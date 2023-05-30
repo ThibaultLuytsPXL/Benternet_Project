@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include "nzmqt/nzmqt.hpp"
+//#include "nzmqt/nzmqt.hpp"
 #include <nzmqt/impl.hpp>
 #include <QCoreApplication>
 #include <QString>
@@ -15,19 +15,19 @@
 class WarHammerLore: public QObject
 {
 public:
-    WarHammerLore(QCoreApplication *b);
+    WarHammerLore(QCoreApplication *a);
     void ReciveMessage(const QList<QByteArray>& messages);
     void SendMessage(QString msg);
     void DiceRoll(int, QList<QString>);
     void LoreList();
     void LoreHelp(QList<QString>);
     void Help(QList<QString>);
-    QMap<QString, QString> loreListLoyal;
-    QMap<QString, QString> loreListTraitor;
-    QMap<QString, QString> loreListAlpha;
 private:
     nzmqt::ZMQSocket *pusher;
     nzmqt::ZMQSocket *subscriber;
+    QMap<QString, QString> loreListLoyal;
+    QMap<QString, QString> loreListTraitor;
+    QMap<QString, QString> loreListAlpha;
 
 };
 

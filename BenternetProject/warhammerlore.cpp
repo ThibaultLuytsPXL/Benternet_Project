@@ -37,11 +37,10 @@ WarHammerLore::WarHammerLore(QCoreApplication *a)
 
 void WarHammerLore::ReciveMessage(const QList<QByteArray>& messages)
 {
-
     for(QByteArray msgByteArray : messages) {
         QString msg = QString::fromUtf8(msgByteArray);
         QList<QString> msgSplit = msg.split(">");
-
+        std::cout << msg.toStdString() << std::endl;
         if(msgSplit[2].toLower().compare("help") == 0)
         {
             Help(msgSplit);
@@ -144,7 +143,7 @@ void WarHammerLore::DiceRoll(int number, QList<QString> id)
 
 void WarHammerLore::Help(QList<QString> id)
 {
-    QString help = QString("LoreHammer!>%1>Help\n\nFor Rolling Dice, send:\nLoreHammer?>%1>Dice># for rolling a dice between 0 and #\n\nFor a list of the main Lore categories about Warhammer, send:\nLoreHammer?>%1>Lore").arg(id[1]);
+    QString help = QString("LoreHammer!>%1>Help\n\nFor Rolling Dice, send:\nDice # for rolling a dice between 0 and #\n\nFor a list of the main Lore categories about Warhammer, send:\nLore").arg(id[1]);
     SendMessage(help);
 }
 

@@ -9,7 +9,7 @@
 #include <QTimer>
 #include <QThread>
 #include <QDateTime>
-#include <WarhammerLore.h>
+#include <WarHammerLore.h>
 int main( int argc, char *argv[] )
 {
     QCoreApplication a(argc, argv);
