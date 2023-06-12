@@ -39,8 +39,10 @@ int main( int argc, char *argv[] )
 		} );
 
         QTextStream t(stdin);
+        std::cout <<  "send h for a help page"  << std::endl;
         std::cout <<  "Pleas give your name or another ID"  << std::endl;
         QString name = t.readLine();
+
         QThread *thread = QThread::create([pusher, name]{
             while( 1 )
             {
@@ -64,6 +66,33 @@ int main( int argc, char *argv[] )
                     {
                         QList<QString> msgSplit = input.split(" ");
                         input = QString("LoreHammer?>%1>dice>%2").arg(name).arg(msgSplit[1]);
+                        nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );
+                        pusher->sendMessage( message );
+                        //std::cout << "Message send !" << std::endl;
+                    }
+                else if (input.contains("add"))
+                    {
+                        QList<QString> msgSplit = input.split(" ");
+                        QList<QString> msgSplit2 = input.split(">");
+                        input = QString("LoreHammer?>%1>add %2>%3>%4").arg(name).arg(msgSplit[1]).arg(msgSplit2[0]).arg(msgSplit2[1]);
+                        nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );
+                        pusher->sendMessage( message );
+                        //std::cout << "Message send !" << std::endl;
+                    }
+                else if (input.contains("link"))
+                    {
+                        //QList<QString> msgSplit = input.split(" ");
+                        QList<QString> msgSplit = input.split(">");
+                        input = QString("LoreHammer?>%1>link>%2>%3").arg(name).arg(msgSplit[1]).arg(msgSplit[2]);
+                        nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );
+                        pusher->sendMessage( message );
+                        //std::cout << "Message send !" << std::endl;
+                    }
+                else if (input.contains("overview"))
+                    {
+                        //QList<QString> msgSplit = input.split(" ");
+                        //QList<QString> msgSplit2 = input.split(">");
+                        input = QString("LoreHammer?>%1>overview").arg(name);
                         nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );
                         pusher->sendMessage( message );
                         //std::cout << "Message send !" << std::endl;
@@ -96,7 +125,7 @@ int main( int argc, char *argv[] )
                         pusher->sendMessage( message );
                         //std::cout << "Message send !" << std::endl;
                     }
-                else if (input.toLower().compare("l>") == 0)
+                else if (input.toLower().contains("loyal"))
                     {
                         QList<QString> msgSplit = input.split(">");
                         input = QString("LoreHammer?>%1>l>%2").arg(name).arg(msgSplit[1]);
@@ -104,7 +133,7 @@ int main( int argc, char *argv[] )
                         pusher->sendMessage( message );
                         //std::cout << "Message send !" << std::endl;
                     }
-                else if (input.toLower().compare("t>") == 0)
+                else if (input.toLower().contains("traitor"))
                     {
                         QList<QString> msgSplit = input.split(">");
                         input = QString("LoreHammer?>%1>t>%2").arg(name).arg(msgSplit[1]);
@@ -112,13 +141,17 @@ int main( int argc, char *argv[] )
                         pusher->sendMessage( message );
                         //std::cout << "Message send !" << std::endl;
                     }
-                else if (input.toLower().compare("@>") == 0)
+                else if (input.toLower().contains("alpha"))
                     {
                         QList<QString> msgSplit = input.split(">");
                         input = QString("LoreHammer?>%1>@>%2").arg(name).arg(msgSplit[1]);
                         nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );
                         pusher->sendMessage( message );
                         //std::cout << "Message send !" << std::endl;
+                    }
+                else
+                    {
+                        std::cout <<  "wrong input! try again"  << std::endl;
                     }
 
                 //nzmqt::ZMQMessage message = nzmqt::ZMQMessage( input.toUtf8() );

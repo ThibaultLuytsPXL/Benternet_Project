@@ -22,12 +22,16 @@ public:
     void LoreList();
     void LoreHelp(QList<QString>);
     void Help(QList<QString>);
+    void AddListItem(QList<QString>);
+    void Link(QList<QString>);
+    void Overview(QList<QString>);
 private:
     nzmqt::ZMQSocket *pusher;
     nzmqt::ZMQSocket *subscriber;
     QMap<QString, QString> loreListLoyal;
     QMap<QString, QString> loreListTraitor;
     QMap<QString, QString> loreListAlpha;
+    QMap<QString, QString> linkinglist;
 
 };
 
